@@ -26,7 +26,7 @@ cp -Rn /tmp/src/. ./
 rm -rf /tmp/src
 
 echo "---> Building application from source"
-sbt package
+sbt stage
 chmod -R g+rw .
 
 echo "---> Updating script permissions"
