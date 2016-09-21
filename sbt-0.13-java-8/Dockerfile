@@ -4,7 +4,7 @@ FROM openshift/base-centos7
 MAINTAINER Martin Nyholm Jelle <mnj@miracle.dk>
 
 ENV SBT_VERSION 0.13.9
-ENV JAVA_VERSION 1.8.0
+ENV JAVA_VERSION 1.7.0
 
 LABEL io.k8s.description="Build and run Scala applications" \
       io.k8s.display-name="SBT 0.13.9" \
@@ -20,9 +20,6 @@ RUN yum install -y --enablerepo=centosplus \
 
 RUN sbt -ivy /opt/app-root/src/.ivy2 about
 RUN chown -R 1001:0 /opt/app-root/src/.ivy2; chmod -R g+rw /opt/app-root/src/.ivy2
-
-RUN echo 1 | alternatives --config java
-RUN echo 2 | alternatives --config javac
 
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 
